@@ -1,4 +1,4 @@
-# polygeohash
+# geoh
 Transform a geoJSON into a list of geohashes that intersect with it.
 
 

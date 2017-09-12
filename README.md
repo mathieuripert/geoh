@@ -31,7 +31,7 @@ Let's take the geojson of San Francisco boundaries. (available here https://gith
 ![alt text](https://i.imgur.com/qAxtaNh.png)
 
 #### Geohash coverage with precision 6
-`geohashes = geoh.geohashes(geojson=geojson, precision=5)`
+`geohashes = geoh.geohashes(geojson=geojson, precision=6)`
 
 ![alt text](https://i.imgur.com/LonsbLD.jpg)
 

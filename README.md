@@ -12,6 +12,6 @@ Transform a geoJSON into a list of geohashes that intersect with it.
 ```
 import geoh
 
-geohashes = geoh.geohashes(gepjson=geojson, precision=6)
+geohashes = geoh.geohashes(geojson=geojson, precision=6)
 
 ```

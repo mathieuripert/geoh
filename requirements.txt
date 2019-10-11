@@ -2,3 +2,4 @@ pandas
 geopandas
 shapely
 python-geohash
+pytest

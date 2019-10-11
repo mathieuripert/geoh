@@ -1,6 +1,25 @@
 # geoh
 Transform a geoJSON into a list of geohashes that intersect with it.
 
+<table>
+<tr>
+  <td>Latest Pypi Release</td>
+  <td>
+    <a href="https://badge.fury.io/py/geoh">
+      <img src="https://badge.fury.io/py/geoh.svg" />
+    </a>
+  </td>
+ </tr>
+  <tr>
+  <td>Build Status (Travis)</td>
+  <td>
+    <a href="https://travis-ci.org/mathieuripert/geoh">
+      <img src="https://travis-ci.org/mathieuripert/geoh.svg?branch=master" />
+    </a>
+  </td>
+ </tr>
+</table>
+
 
 ## Install
 

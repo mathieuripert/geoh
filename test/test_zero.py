@@ -18,6 +18,16 @@ def geojson_none():
     'features': [None]
   }
 
+@pytest.fixture
+def malformed_geojson():
+    return {
+        'type': 'FeatureCollection',
+        'features': [{
+          'geometry': None,
+          'type': 'Polygon',
+        }]
+    }
+
 @pytest.mark.parametrize("precision", [1, 2 ,3, 4, 5, 6])
 def test_sf(geojson_sf, precision):
   geohashes = geoh.geohashes(geojson=geojson_sf, precision=precision)
@@ -26,4 +36,10 @@ def test_sf(geojson_sf, precision):
 @pytest.mark.parametrize("precision", [1, 2, 3, 4, 5, 6])
 def test_with_none_geojson(geojson_none, precision):
   geohashes = geoh.geohashes(geojson=geojson_none, precision=precision)
-  assert(len(geohashes) == 0)
+  assert(geohashes == [])
+
+
+@pytest.mark.parametrize("precision", [1, 2, 3, 4, 5, 6])
+def test_with_malformed_geojson(malformed_geojson, precision):
+  geohashes = geoh.geohashes(geojson=malformed_geojson, precision=precision)
+  assert(geohashes == [])

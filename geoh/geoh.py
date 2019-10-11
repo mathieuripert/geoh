@@ -50,9 +50,14 @@ def _multi_polygon_to_polygons(geom):
 
 def _polygon_from_geojson(geojson={}):
   if geojson.get("type", None) == "FeatureCollection":
-    df = pd.DataFrame(geojson.get("features", []))
-    df["polygon"] = df.geometry.map(lambda x: shape(x))
-    return MultiPolygon(_flatten(map(_multi_polygon_to_polygons, df["polygon"].values)))
+    features = [f for f in geojson.get("features", []) if f is not None]
+    df = pd.DataFrame(features, columns=["geometry"])
+    df["polygon"] = df[pd.notnull(df.geometry)].geometry.map(lambda x: shape(x))
+    df = df[pd.notnull(df.polygon)]
+    if len(df.index):
+      return MultiPolygon(_flatten(map(_multi_polygon_to_polygons, df["polygon"].values)))
+    else:
+      return None
   elif geojson.get("type", None) == "Feature":
     return shape(geojson.get("geometry", None))
   return None

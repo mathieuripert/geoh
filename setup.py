@@ -10,7 +10,7 @@ required = [
 
 setup(
     name="geoh",
-    version="0.2",
+    version="0.3",
     author="Mathieu Ripert",
     author_email="mathieu@instacart.com",
     url="https://github.com/mathieuripert/geoh",

@@ -9,7 +9,7 @@ required = [
 
 setup(
     name="geoh",
-    version="0.4",
+    version="0.5",
     author="Mathieu Ripert",
     author_email="john.miller@billups.com",
     url="https://github.com/billups/geoh",

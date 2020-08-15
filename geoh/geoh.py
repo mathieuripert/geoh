@@ -30,8 +30,11 @@ def get_center_geohash(polygon, precision=2):
     return gh.encode(centroid[1], centroid[0], precision=precision)
 
 def geohashes_polygon_intersection(polygon, geohashes=[]):
-    geoms = [_geohash_to_shape(gh) for gh in geohashes]
-    return list(filter(lambda gh: gh.intersects(polygon), geoms))
+    """Return geohashes that intersect `polygon`"""
+    from itertools import compress
+    geoms = map(_geohash_to_shape, geohashes)
+    intersections = map(lambda gh: gh.intersects(polygon), geoms)
+    return list(compress(geohashes, intersections))
 
 def _generate_inner_geohashes_for_geohashes(geohashes=[]):
     return _flatten(map(_generate_inner_geohashes_for_geohash, geohashes))
